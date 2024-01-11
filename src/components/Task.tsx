@@ -10,7 +10,9 @@ export interface TaskProps {
 export function Task({ content, checked }: TaskProps){
   return (
     <li className={styles.taskItem}>
-      <input type="radio" checked={checked} />
+      <div>
+        <input type="radio" checked={checked} />
+      </div>
       <p>
         {content}
       </p>
