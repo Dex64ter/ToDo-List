@@ -1,27 +1,22 @@
 import { Task, TaskProps } from "./Task";
 import { LuClipboardList  } from "react-icons/lu";
 import styles from "./TaskList.module.css";
-import { useState } from "react";
+// import { useState } from "react";
 
 
-export function TaskList(){
-  const [tasks, setTasks] = useState<TaskProps[]>([
-    {
-      id: 0,
-      content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    },
-    {
-      id: 1,
-      content: "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    },
-  ])
+interface TaskListProps {
+  list: TaskProps[];
+}
+
+export function TaskList({ list }: TaskListProps){
+  
 
   return (
     <section>
       <div className={styles.info}>
         <div className={styles.createdTasks}>
           Tarefas criadas
-          <span>0</span>
+          <span>{list.length}</span>
         </div>
         <div className={styles.tasksDone}>
           Concluídas
@@ -31,16 +26,16 @@ export function TaskList(){
 
       <ul className={styles.listTasks}>
         {
-          tasks.length === 0 ? 
+          list.length === 0 ? 
           <p className={styles.empty}>
             <LuClipboardList size={52} />
             <strong>Você ainda não tem tarefas cadastradas</strong>
             <span>Crie tarefas e organize seus itens a fazer</span>
           </p>
           :
-          tasks.map((task) => {
+          list.map((task) => {
             return (
-              <Task key={task.id} content={task.content} id={task.id} />
+              <Task key={task.content} content={task.content} />
             )
           })
         }

@@ -1,11 +1,36 @@
+import { ChangeEvent, useState } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
 import styles from "./NewTask.module.css";
+import { TaskProps } from './Task';
 
-export function NewTask() {
+interface NewTaskProps {
+  onAddNewTask: (task: TaskProps) => void
+}
+
+export function NewTask({ onAddNewTask }: NewTaskProps) {
+  const [contentTask, setContentText] = useState('');
+
+  function handleAddNewTask(){
+    onAddNewTask(
+      {
+        content: contentTask
+      }
+    )
+  }
+
+  function handleContentTask(event: ChangeEvent<HTMLInputElement>) {
+    setContentText(event.target.value)
+  }
+
   return (
     <div className={styles.newTaskInput}>
-      <input type="text" placeholder="Adicione um nova tarefa"/>
-      <button className={styles.createButton}>
+      <input
+        type="text"
+        placeholder="Adicione um nova tarefa"
+        value={contentTask}
+        onChange={handleContentTask}
+      />
+      <button className={styles.createButton} onClick={handleAddNewTask}>
         Criar
         <FiPlusCircle size={16}/>
       </button>
