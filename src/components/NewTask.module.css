@@ -1,0 +1,48 @@
+.newTaskInput {
+  display: grid;
+  grid-template-columns: 1fr 90px;
+  gap: .5rem;
+}
+
+.newTaskInput input, .newTaskInput button {
+  height: 3.25rem;
+}
+
+.newTaskInput input {
+  padding: 1rem;
+
+  background: var(--gray-500);
+  color: var(--gray-300);
+
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+  outline: none;
+}
+
+.newTaskInput input:focus {
+  border: 1px solid var(--purple-dark);
+  color: var(--gray-100);
+}
+
+.createButton {
+  background: var(--blue-dark);
+  color: var(--gray-100);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  font-size: 0.875rem;
+  font-weight: 700;
+  
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.createButton:hover {
+  background: var(--blue);
+}

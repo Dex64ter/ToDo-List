@@ -1,0 +1,56 @@
+.info {
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  line-height: normal;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.info .createdTasks {
+  color: var(--blue);
+
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.createdTasks span {
+  padding: 0.125rem .5rem;
+  border-radius: 40px;
+
+  background: var(--gray-400);
+  color: var(--gray-200);
+}
+
+.tasksDone {
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.tasksDone span {
+  padding: 0.125rem .5rem;
+  border-radius: 40px;
+
+  background: var(--gray-400);
+  color: var(--gray-200);
+}
+
+.empty {
+  border-top: 1px solid var(--gray-400);
+  color: var(--gray-300);
+  padding: 4rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty strong {
+  margin-top: 1rem;
+}
