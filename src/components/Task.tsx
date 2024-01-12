@@ -1,7 +1,7 @@
-import { FiTrash2 } from "react-icons/fi";
-import styles from "./Task.module.css";
 import { useState } from "react";
+import { FiTrash2 } from "react-icons/fi";
 
+import styles from "./Task.module.css";
 export interface TaskTypeProps {
   content: string;
 }
