@@ -1,15 +1,23 @@
-import { Task, TaskProps } from "./Task";
+import { useState } from "react";
+import { Task, TaskTypeProps } from "./Task";
 import { LuClipboardList  } from "react-icons/lu";
 import styles from "./TaskList.module.css";
-// import { useState } from "react";
 
 
 interface TaskListProps {
-  list: TaskProps[];
+  list: TaskTypeProps[];
 }
 
 export function TaskList({ list }: TaskListProps){
-  
+  const [doneTasks, setDoneTasks] = useState(0);
+
+  function onDonetasks(done: boolean){
+    if (!done) {
+      doneTasks === 0 ? setDoneTasks(0) : setDoneTasks(doneTasks - 1)
+    } else {
+      setDoneTasks(doneTasks + 1)
+    }
+  }
 
   return (
     <section>
@@ -20,7 +28,13 @@ export function TaskList({ list }: TaskListProps){
         </div>
         <div className={styles.tasksDone}>
           Concluídas
-          <span>0</span>
+          <span>
+            {
+             list.length === 0 ? 0
+             :
+             `${doneTasks} de ${list.length}`
+            }
+          </span>
         </div>
       </div>
 
@@ -35,7 +49,7 @@ export function TaskList({ list }: TaskListProps){
           :
           list.map((task) => {
             return (
-              <Task key={task.content} content={task.content} />
+              <Task key={task.content} tk={task} onDoneTasks={onDonetasks} />
             )
           })
         }

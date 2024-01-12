@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
 import styles from "./NewTask.module.css";
-import { TaskProps } from './Task';
+import { TaskTypeProps } from './Task';
 
 interface NewTaskProps {
-  onAddNewTask: (task: TaskProps) => void
+  onAddNewTask: (task: TaskTypeProps) => void;
 }
 
 export function NewTask({ onAddNewTask }: NewTaskProps) {
@@ -16,6 +16,7 @@ export function NewTask({ onAddNewTask }: NewTaskProps) {
         content: contentTask
       }
     )
+    setContentText("")
   }
 
   function handleContentTask(event: ChangeEvent<HTMLInputElement>) {

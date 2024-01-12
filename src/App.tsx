@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
 import { NewTask } from './components/NewTask';
-import { TaskProps } from './components/Task';
+import { TaskTypeProps } from './components/Task';
 import { TaskList } from './components/TaskList';
 
 import styles from './App.module.css';
@@ -13,7 +13,7 @@ export function App() {
     },
   ])
 
-  function updateNewArray(task: TaskProps) {
+  function updateNewArray(task: TaskTypeProps) {
     setTasks([...tasks, task])
   }
 
