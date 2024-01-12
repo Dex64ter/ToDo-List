@@ -17,12 +17,16 @@ export function App() {
     setTasks([...tasks, task])
   }
 
+  function updateWithoutOne(tasks: TaskTypeProps[]) {
+    setTasks(tasks)
+  }
+
   return (
     <>
       <Header />
       <main className={styles.mainContent}>
         <NewTask onAddNewTask={updateNewArray}/>
-        <TaskList list={tasks} />
+        <TaskList list={tasks} onUpdateTasks={updateWithoutOne}/>
       </main>
     </>
   )

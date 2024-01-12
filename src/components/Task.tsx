@@ -9,14 +9,19 @@ export interface TaskTypeProps {
 interface TaskProps {
   tk: TaskTypeProps;
   onDoneTasks: (done: boolean) => void;
+  onDeleteTask: (contentTask: string) => void
 }
 
-export function Task({ tk, onDoneTasks }: TaskProps){
+export function Task({ tk, onDoneTasks, onDeleteTask }: TaskProps){
   const [check, setCheck] = useState(false)
 
   function handleClickCheck() {
     setCheck(!check);
     onDoneTasks(!check);
+  }
+
+  function deleteTask() {
+    onDeleteTask(tk.content);
   }
 
   return (
@@ -28,7 +33,7 @@ export function Task({ tk, onDoneTasks }: TaskProps){
       <p className={check ? styles.contentCheck : styles.contentNotCheck} >
         {tk.content}
       </p>
-      <button className={styles.deleteButton}>
+      <button className={styles.deleteButton} onClick={deleteTask}>
         <FiTrash2 size={17} />
       </button>
     </li>

@@ -6,9 +6,10 @@ import styles from "./TaskList.module.css";
 
 interface TaskListProps {
   list: TaskTypeProps[];
+  onUpdateTasks: (tasks: TaskTypeProps[]) => void;
 }
 
-export function TaskList({ list }: TaskListProps){
+export function TaskList({ list, onUpdateTasks }: TaskListProps){
   const [doneTasks, setDoneTasks] = useState(0);
 
   function onDonetasks(done: boolean){
@@ -17,6 +18,11 @@ export function TaskList({ list }: TaskListProps){
     } else {
       setDoneTasks(doneTasks + 1)
     }
+  }
+
+  function deleteTask(contentTask: string) {
+    const newListTasks = list.filter(task => task.content !== contentTask)
+    onUpdateTasks(newListTasks);
   }
 
   return (
@@ -49,7 +55,7 @@ export function TaskList({ list }: TaskListProps){
           :
           list.map((task) => {
             return (
-              <Task key={task.content} tk={task} onDoneTasks={onDonetasks} />
+              <Task key={task.content} tk={task} onDoneTasks={onDonetasks} onDeleteTask={deleteTask}/>
             )
           })
         }
